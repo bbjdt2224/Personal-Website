@@ -1,4 +1,15 @@
 :root {
-    --primary-color: #55fca0;
-    --secondary-color: #0a0e29;
+  --primary-color: #55fca0;
+  --secondary-color: #0a0e29;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--secondary-color);
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  font-size: 22px;
 }
