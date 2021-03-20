@@ -1,0 +1,22 @@
+<div class="header">
+  <div class="payment">
+    <a class="cash" href="https://cash.app/$JustinTrue" target="_blank">
+      Cash App: $JustinTrue
+    </a>
+    <a
+      class="venmo"
+      href="https://venmo.com/code?user_id=2072694661054464615"
+      target="_blank"
+    >
+      Venmo: @Justin-True-22
+    </a>
+  </div>
+  <span class="banner">All Designs In Stock $2</span>
+</div>
+
+<div class="design-container">
+  <jt-sticker-item
+    *ngFor="let design of designs"
+    [design]="design"
+  ></jt-sticker-item>
+</div>
