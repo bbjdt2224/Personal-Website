@@ -18,7 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": ["src/jt.ico", "src/assets", "_redirects"],
+            "assets": ["src/jt.ico", "src/assets", "src/_redirects"],
             "styles": ["src/styles.scss"],
             "scripts": []
           },
