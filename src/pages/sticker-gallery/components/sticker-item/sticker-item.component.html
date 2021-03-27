@@ -2,5 +2,5 @@
   <img [src]="design.Image[0].url" />
   <span class="name">{{ design.Name }}</span>
   <span *ngIf="design.Made" class="stock">In Stock</span>
-  <span *ngIf="!design.Made" class="stock">Out of Stock</span>
+  <span *ngIf="!design.Made" class="stock">Coming Soon</span>
 </div>

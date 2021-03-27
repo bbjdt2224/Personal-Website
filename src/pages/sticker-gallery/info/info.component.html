@@ -34,4 +34,20 @@
     <br />The Android antenna is located around the middle of the phone
   </p>
   <img src="assets/images/android-antenna.png" class="placement" />
+  <h1>Feedback</h1>
+  <p>
+    Please reach out to me with any questions, comments, or feedback you have
+    and I will try to respond as soon as I can
+  </p>
+  <form [formGroup]="feedback" (ngSubmit)="onSubmit()">
+    <p class="errorMessage">{{ errorMsg }}</p>
+    <label>Name *</label>
+    <input type="text" formControlName="name" required />
+    <label>Email *</label>
+    <input type="text" formControlName="email" required />
+    <label>Feedback *</label>
+    <textarea formControlName="feedback" required></textarea>
+    <button type="submit" [disabled]="submitted">Send Feedback</button>
+    <p class="successMessage">{{ successMsg }}</p>
+  </form>
 </div>

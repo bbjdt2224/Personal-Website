@@ -7,10 +7,11 @@ import { InfoComponent } from 'src/pages/sticker-gallery/info/info.component';
 import { StickerGalleryComponent } from 'src/pages/sticker-gallery/sticker-gallery.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, PagesModule, AppRoutingModule],
+  imports: [BrowserModule, PagesModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,5 +1,8 @@
 <div class="header">
-  <a routerLink="/stickers/info" class="info">?</a>
+  <div class="header-info">
+    <p class="title">True Tags</p>
+    <a routerLink="/stickers/info" class="info">?</a>
+  </div>
   <div class="payment">
     <a class="cash" href="https://cash.app/$JustinTrue" target="_blank">
       Cash App: $JustinTrue
@@ -12,12 +15,29 @@
       Venmo: @Justin-True-22
     </a>
   </div>
-  <span class="banner">All Designs In Stock $2</span>
 </div>
 
-<div class="design-container">
-  <jt-sticker-item
-    *ngFor="let design of designs"
-    [design]="design"
-  ></jt-sticker-item>
+<div class="container">
+  <div class="tabs">
+    <button (click)="currentStock = true" [class.active]="currentStock">
+      In Stock
+    </button>
+    <button (click)="currentStock = false" [class.active]="!currentStock">
+      Custom Design
+    </button>
+  </div>
+  <span class="banner">{{ banner }}</span>
+  <div *ngIf="currentStock" class="design-container">
+    <jt-sticker-item
+      *ngFor="let design of designs"
+      [design]="design"
+    ></jt-sticker-item>
+  </div>
+  <div *ngIf="!currentStock" class="custom">
+    <p>
+      If you wish to custom order a design please email
+      <a href="mailto:truejustin22@gmail.com">truejustin22@gmail.com</a>with the
+      design
+    </p>
+  </div>
 </div>

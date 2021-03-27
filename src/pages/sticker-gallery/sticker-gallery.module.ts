@@ -7,10 +7,19 @@ import { StickerItemComponent } from './components/sticker-item/sticker-item.com
 import { InfoComponent } from './info/info.component';
 import { StickerDesignService } from './service/sticker-design.service';
 import { StickerGalleryRoutingModule } from './sticker-gallery-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material';
 
 @NgModule({
   declarations: [StickerGalleryComponent, StickerItemComponent, InfoComponent],
-  imports: [CommonModule, HttpClientModule, StickerGalleryRoutingModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    StickerGalleryRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTabsModule,
+  ],
   providers: [StickerDesignService],
   exports: [
     StickerGalleryComponent,

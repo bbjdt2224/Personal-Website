@@ -3,6 +3,19 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 32px;
+  }
   .info {
     color: white;
     text-decoration: none;
@@ -10,7 +23,6 @@
     border-radius: 50%;
     height: 30px;
     width: 30px;
-    align-self: flex-end;
     padding: 0;
   }
 }
@@ -21,6 +33,42 @@
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  margin: 24px;
+  border-bottom: 1px solid var(--primary-color);
+  width: 100%;
+  button {
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: 24px;
+    margin: 0 48px;
+    &.active {
+      border-bottom: 1px solid white;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  a {
+    color: var(--primary-color);
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    margin: 4px;
+  }
 }
 
 .design-container {
@@ -41,6 +89,12 @@ a {
   padding: 16px;
   font-size: 24px;
 }
+
+.custom {
+  margin: 0 24px;
+  text-align: center;
+}
+
 .cash {
   color: rgb(0, 200, 83);
 }
