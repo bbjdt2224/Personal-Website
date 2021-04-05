@@ -8,7 +8,7 @@ import { InfoComponent } from './info/info.component';
 import { StickerDesignService } from './service/sticker-design.service';
 import { StickerGalleryRoutingModule } from './sticker-gallery-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [StickerGalleryComponent, StickerItemComponent, InfoComponent],
