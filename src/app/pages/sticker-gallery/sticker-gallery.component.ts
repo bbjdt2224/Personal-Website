@@ -23,9 +23,12 @@ export class StickerGalleryComponent implements OnInit {
     }
   }
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.getDesigns();
+  }
+
+  async getDesigns() {
     await this.stickerDesignService.getDesigns();
     this.designs = this.stickerDesignService.designs;
-    console.log(this.designs);
   }
 }

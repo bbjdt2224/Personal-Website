@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="delete" *ngIf="editable" (click)="delete()">X</div>
+  <img [src]="image" />
+  <div class="edit-buttons" *ngIf="editable">
+    <button (click)="open($event)">Test</button>
+    <button (click)="edit($event)">Edit</button>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from '../pages/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'stickers',
     loadChildren: () =>
-      import('../pages/sticker-gallery/sticker-gallery.module').then(
+      import('./pages/sticker-gallery/sticker-gallery.module').then(
         (m) => m.StickerGalleryModule
       ),
   },

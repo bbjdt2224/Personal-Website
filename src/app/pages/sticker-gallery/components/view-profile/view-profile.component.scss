@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 32px;
+  }
+}
+
+.header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.name {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 0;
+}

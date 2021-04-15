@@ -1,0 +1,95 @@
+<div class="header">
+  <div class="header-info">
+    <p class="title">True Tags</p>
+    <jt-button class="nav-link" (click)="authService.signOut()">
+      <i class="fas fa-sign-out-alt"></i>Log out
+    </jt-button>
+  </div>
+</div>
+
+<div class="container">
+  <h1 class="title">Edit Profile</h1>
+  <form [formGroup]="userForm">
+    <div class="formGroup">
+      <label>Image</label>
+      <div class="image">
+        <input
+          type="file"
+          class="formControl"
+          accept="image/*"
+          (change)="fileChangeEvent($event)"
+        />
+        <image-cropper
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true"
+          [aspectRatio]="4 / 4"
+          [resizeToWidth]="256"
+          [roundCropper]="true"
+          format="png"
+          (imageCropped)="imageCropped($event)"
+          (imageLoaded)="imageLoaded()"
+          (cropperReady)="cropperReady()"
+          (loadImageFailed)="loadImageFailed()"
+        ></image-cropper>
+        <img *ngIf="croppedImage" class="preview" [src]="croppedImage" />
+      </div>
+    </div>
+
+    <div class="formGroup">
+      <label>Name</label>
+      <input
+        formControlName="displayName"
+        type="text"
+        class="formControl"
+        placeholder="Name"
+        #userNamesss
+        required
+      />
+    </div>
+    <div class="formGroup">
+      <label>Company</label>
+      <input
+        type="text"
+        class="formControl"
+        placeholder="Company"
+        formControlName="company"
+      />
+    </div>
+    <div class="formGroup">
+      <label>Phone</label>
+      <input
+        type="phone"
+        class="formControl"
+        placeholder="Phone"
+        formControlName="phone"
+      />
+    </div>
+    <div class="formGroup">
+      <label>Address</label>
+      <input
+        type="text"
+        class="formControl"
+        placeholder="Address"
+        formControlName="address"
+      />
+    </div>
+    <div class="formGroup">
+      <label>Website</label>
+      <input
+        type="text"
+        class="formControl"
+        placeholder="Website"
+        formControlName="website"
+      />
+    </div>
+    <div class="formGroup">
+      <label>Allow Others To Have This Information</label>
+      <input
+        type="checkbox"
+        class="formControl"
+        formControlName="createContact"
+      />
+    </div>
+    <jt-button (click)="save()">Save</jt-button>
+  </form>
+</div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AirtableResponse } from 'src/app/interfaces/airtable-response.interface';
 import { Design } from '../interfaces/design.interface';
-import { AirtableResponse } from 'src/interfaces/airtable-response.interface';
 import { Feedback } from '../interfaces/feedback.interface';
 
 @Injectable()
@@ -24,7 +24,6 @@ export class StickerDesignService {
   }
 
   async addFeedback(feedback: Feedback) {
-    console.log(feedback);
     const feedbackResponse = await this.http
       .post(
         'https://api.airtable.com/v0/applkHTorWt7nP2Kf/Feedback',
@@ -43,6 +42,5 @@ export class StickerDesignService {
         { headers: { Authorization: 'Bearer keyuyEzd2rQbq8Jb7' } }
       )
       .toPromise();
-    console.log(feedbackResponse);
   }
 }

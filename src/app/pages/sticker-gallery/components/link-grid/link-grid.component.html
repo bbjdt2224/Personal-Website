@@ -1,0 +1,11 @@
+<div class="container">
+  <jt-button *ngIf="editable" (click)="addLinkItem()">Add New Item</jt-button>
+  <div class="grid">
+    <jt-link-item
+      *ngFor="let item of linkList"
+      [editable]="editable"
+      [link]="item"
+      (valueChanged)="updateGrid()"
+    ></jt-link-item>
+  </div>
+</div>
