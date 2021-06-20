@@ -3,6 +3,15 @@
     <p class="title">True Tags</p>
     <a routerLink="/stickers/info" class="info">?</a>
   </div>
+  <div class="etsy">
+    <a
+      class="etsy-button"
+      href="https://www.etsy.com/listing/1023288744/true-tags?ref=shop_home_active_1"
+      target="_blank"
+    >
+      Buy Stickers Here
+    </a>
+  </div>
   <div class="payment">
     <a class="cash" href="https://cash.app/$JustinTrue" target="_blank">
       Cash App: $JustinTrue
@@ -18,14 +27,14 @@
 </div>
 
 <div class="container">
-  <div class="tabs">
+  <!-- <div class="tabs">
     <button (click)="currentStock = true" [class.active]="currentStock">
       In Stock
     </button>
     <button (click)="currentStock = false" [class.active]="!currentStock">
       Custom Design
     </button>
-  </div>
+  </div> -->
   <span class="banner">{{ banner }}</span>
   <div *ngIf="currentStock" class="design-container">
     <jt-sticker-item

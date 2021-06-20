@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../service/authorization.service';
 import { User } from '../../interfaces/user';
 import { MatDialog } from '@angular/material/dialog';
-import { EditUserProfileDialogComponent } from '../edit-user-profile-dialog/edit-user-profile-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({

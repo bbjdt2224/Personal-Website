@@ -9,6 +9,14 @@
     color: var(--primary-color);
     margin: 32px;
   }
+  .right-options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .dropdown-toggle {
+      color: var(--primary-color);
+    }
+  }
 }
 
 .header-info {
