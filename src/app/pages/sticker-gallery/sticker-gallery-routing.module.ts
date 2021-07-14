@@ -18,7 +18,7 @@ import { MyItemsComponent } from './pages/my-items/my-items.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'stickers',
     children: [
       {
         path: '',
