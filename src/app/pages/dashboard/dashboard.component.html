@@ -1,0 +1,44 @@
+<div class="dashboard">
+  <div class="left-header">
+    <div class="time">
+      {{ currentTime | date : "h:mm"
+      }}<span class="tod">{{ currentTime | date : "a" }}</span>
+    </div>
+    <div class="date">{{ currentTime | date : "EEE, d MMMM" }}</div>
+
+    <div class="weather">
+      <div class="today">
+        <div class="numbers">
+          <div class="extras">
+            <img class="icon" [src]="weatherIcon" />
+            <span class="min-max">{{ weatherMin }}° - {{ weatherMax }}°</span>
+          </div>
+          <div class="temp">{{ currentWeather }}°</div>
+        </div>
+        <div class="description">{{ weatherDescription }}</div>
+      </div>
+      <div class="forecast">
+        <div class="today-forecast">
+          <div class="tod" *ngFor="let time of upcomingToday">
+            <div class="timestamp">{{ time.time | date : "h" }}</div>
+            <img class="icon" [src]="time.icon" />
+            <div class="temp">{{ time.temp }}°</div>
+          </div>
+        </div>
+        <div class="week">
+          <div class="day" *ngFor="let day of upcomingWeek">
+            <span class="dow">{{ day.date | date : "EEE" }}</span>
+            <span class="date">{{ day.date | date : "dd MMM" }}</span>
+            <img class="icon" [src]="day.icon" />
+            <span class="min">{{ day.temp }}°</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="overlay">
+        
+    </div>
+  </div>
+</div>
