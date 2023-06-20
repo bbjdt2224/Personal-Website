@@ -12,3 +12,12 @@ export interface ToDoItem {
     Name: string,
     Complete?: boolean
 }
+
+export interface Recipe {
+    Name: string
+    Preheat: number
+    Time: any
+    Ingredients: string
+    Recipe: string
+    Rating?: any
+}

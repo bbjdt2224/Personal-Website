@@ -22,4 +22,8 @@ export class AirtableService {
   getTodoList() {
     return this.http.get(this.url + '/' + environment.todo_list_id, this.options);
   }
+
+  getAllRecipes() {
+    return this.http.get(this.url + '/' + environment.recipe_id, this.options)
+  }
 }

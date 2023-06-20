@@ -30,15 +30,63 @@
             <span class="dow">{{ day.date | date : "EEE" }}</span>
             <span class="date">{{ day.date | date : "dd MMM" }}</span>
             <img class="icon" [src]="day.icon" />
-            <span class="min">{{ day.temp }}°</span>
+            <span class="min">{{ day.min }}°</span>
+            <span class="max">{{ day.max }}°</span>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="body">
-    <div class="overlay">
-        
+  <div class="right">
+    <div class="toolbar">
+      <div class="button" *ngIf="!partyMode && showRecipes" (click)="setShowRecipes(false)">Close</div>
+      <div class="button" *ngIf="!partyMode && !showRecipes" (click)="setShowRecipes(true)">Cook Book</div>
+      <div class="button" *ngIf="!partyMode && !showRecipes" (click)="togglePartyMode()">
+        Party Mode
+      </div>
+      <div class="button" *ngIf="partyMode && !showRecipes" (click)="togglePartyMode()">
+        Daily Mode
+      </div>
+    </div>
+    <div class="body">
+      <div class="overlay">
+        <div *ngIf="!partyMode && !showRecipes" class="next-due">
+          <div class="top">
+            <div class="paycheck">
+              <span class="days-until">{{ untilPaycheck }}</span> days until
+              Payday
+            </div>
+            <div class="expenses">
+              <div class="expense" *ngFor="let e of nextDue">
+                {{ e.title }}
+                <span *ngIf="e.amt > 0">${{ e.amt | number : "1.2" }}</span> in
+                {{ e.daysUntil }} days
+              </div>
+            </div>
+          </div>
+          <div class="total">
+            <span class="amount">${{ owed }}</span> + {{ getUnknownAmounts() }}
+          </div>
+        </div>
+        <div class="recipes" *ngIf="!partyMode && showRecipes">
+          <div class="all-recipes" *ngIf="!chosenRecipe">
+            <div class="recipe" *ngFor="let r of recipes" (click)="chooseRecipe(r)">
+              {{r.Name}}
+            </div>
+          </div>
+          <div class="chosen-recipe" *ngIf="chosenRecipe">
+            <div class="recipe-header">
+              <div class="recipe-title">{{chosenRecipe.Name}}</div>
+              <div class="recipe-preheat">Preheat: <b>{{chosenRecipe.Preheat}}°</b></div>
+              <div class="recipe-time">Cook Time: <b>{{(chosenRecipe.Time / 60)}}</b></div>
+            </div>
+            <div class="recipe-instructions">
+              <div class="recipe-ingredients" [innerHTML]="chosenRecipe.Ingredients"></div>
+              <div class="recipe-recipe" [innerHTML]="chosenRecipe.Recipe"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
