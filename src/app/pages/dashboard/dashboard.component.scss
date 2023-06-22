@@ -44,6 +44,7 @@
                     font-size: 18px;
                     .icon {
                         width: 50px;
+                        filter: invert(100%)
                     }
                 }
                 .temp {
@@ -60,6 +61,7 @@
             font-size: 24px;
             .icon {
                 width: 40px;
+                filter: invert(100%)
             }
             .today-forecast {
                 display: flex;

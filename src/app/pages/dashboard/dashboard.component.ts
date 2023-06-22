@@ -18,7 +18,7 @@ interface ForecastItem {
   selector: 'jt-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DashboardComponent implements OnInit {
   currentTime = new Date();
@@ -67,6 +67,9 @@ export class DashboardComponent implements OnInit {
     setInterval(() => {
       this.updateWeather();
       this.updateForecast();
+      this.nextDue = this.dashboard.getNextDue();
+      this.untilPaycheck = this.dashboard.getDaysUntilPaycheck();
+      this.owed = this.getMoneyOwed();
     }, 1800000);
   }
 
@@ -82,8 +85,8 @@ export class DashboardComponent implements OnInit {
   }
 
   setShowRecipes(show: boolean) {
-    this.showRecipes = show
-    this.chosenRecipe = undefined
+    this.showRecipes = show;
+    this.chosenRecipe = undefined;
   }
 
   getTodoData() {
@@ -103,8 +106,8 @@ export class DashboardComponent implements OnInit {
   }
 
   chooseRecipe(r: Recipe) {
-    r.Ingredients = this.markupToHtml(r.Ingredients)
-    r.Recipe = this.markupToHtml(r.Recipe)
+    r.Ingredients = this.markupToHtml(r.Ingredients);
+    r.Recipe = this.markupToHtml(r.Recipe);
     this.chosenRecipe = r;
   }
 
@@ -117,9 +120,10 @@ export class DashboardComponent implements OnInit {
         .split(' ')
         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
         .join(' ');
-      this.dashboard.getImage(data.weather[0].icon).subscribe((data) => {
-        this.weatherIcon = URL.createObjectURL(data);
-      });
+      this.weatherIcon = `./assets/images/weather/${data.weather[0].icon.replace('n', 'd')}.svg`
+      // this.dashboard.getImage(data.weather[0].icon).subscribe((data) => {
+      //   this.weatherIcon = URL.createObjectURL(data);
+      // });
     });
   }
 
@@ -135,10 +139,11 @@ export class DashboardComponent implements OnInit {
       this.upcomingToday[i] = {
         time: new Date(f.dt * 1000),
         temp: Math.round(f.main.temp),
+        icon: `./assets/images/weather/${f.weather[0].icon.replace('n', 'd')}.svg`
       };
-      this.dashboard.getImage(f.weather[0].icon).subscribe((data) => {
-        this.upcomingToday[i].icon = URL.createObjectURL(data);
-      });
+      // this.dashboard.getImage(f.weather[0].icon).subscribe((data) => {
+      //   this.upcomingToday[i].icon = URL.createObjectURL(data);
+      // });
     });
   }
 
@@ -166,10 +171,11 @@ export class DashboardComponent implements OnInit {
         date: d[0].date,
         min: this.findMin(d).temp,
         max: max.temp,
+        icon: `./assets/images/weather/${max.icon.replace('n', 'd')}.svg`
       };
-      this.dashboard.getImage(max.icon).subscribe((data) => {
-        this.upcomingWeek[i - today - 1].icon = URL.createObjectURL(data);
-      });
+      // this.dashboard.getImage(max.icon).subscribe((data) => {
+      //   this.upcomingWeek[i - today - 1].icon = URL.createObjectURL(data);
+      // });
     });
   }
 
@@ -210,56 +216,52 @@ export class DashboardComponent implements OnInit {
   }
 
   markupToHtml(input: string) {
-    let temp = input
+    let temp = input;
     if (temp.charAt(0) === '-') {
-      while(true) {
-        const index = temp.indexOf('-')
+      while (true) {
+        const index = temp.indexOf('-');
         if (index < 0) {
           break;
-        }
-        else if (index === 0) {
-          temp = temp.substring(1)
-        }
-        else {
-          temp = temp.substring(0,index) + '</li><li>' + temp.substring(index + 1)
+        } else if (index === 0) {
+          temp = temp.substring(1);
+        } else {
+          temp =
+            temp.substring(0, index) + '</li><li>' + temp.substring(index + 1);
         }
       }
-      temp = '<ul><li>' + temp + '</li></ul>'
+      temp = '<ul><li>' + temp + '</li></ul>';
     }
 
     if (temp.indexOf('1.') === 0) {
-      let counter = 1
-      while(true) {
-        const index = temp.indexOf(counter + '.')
+      let counter = 1;
+      while (true) {
+        const index = temp.indexOf(counter + '.');
         if (index < 0) {
           break;
+        } else if (index === 0) {
+          temp = temp.substring(2);
+        } else {
+          temp =
+            temp.substring(0, index) + '</li><li>' + temp.substring(index + 2);
         }
-        else if (index === 0) {
-          temp = temp.substring(2)
-        }
-        else {
-          temp = temp.substring(0,index) + '</li><li>' + temp.substring(index + 2)
-        }
-        counter ++
+        counter++;
       }
-      temp = '<ol><li>' + temp + '</li></ol>'
+      temp = '<ol><li>' + temp + '</li></ol>';
     }
 
-    let boldCounter = 0
-    while(true) {
-      const index = temp.indexOf('**')
+    let boldCounter = 0;
+    while (true) {
+      const index = temp.indexOf('**');
       if (index < 0) {
         break;
+      } else if (boldCounter % 2 === 0) {
+        temp = temp.substring(0, index) + '<b>' + temp.substring(index + 2);
+      } else if (boldCounter % 2 === 1) {
+        temp = temp.substring(0, index) + '</b>' + temp.substring(index + 2);
       }
-      else if ((boldCounter % 2) === 0) {
-        temp = temp.substring(0,index) + '<b>' + temp.substring(index + 2)
-      }
-      else if ((boldCounter % 2) === 1) {
-        temp = temp.substring(0,index) + '</b>' + temp.substring(index + 2)
-      }
-      boldCounter++
+      boldCounter++;
     }
 
-    return temp
+    return temp;
   }
 }
