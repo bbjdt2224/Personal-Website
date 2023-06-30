@@ -65,7 +65,7 @@
             </div>
           </div>
           <div class="total">
-            <span class="amount">${{ owed }}</span> + {{ getUnknownAmounts() }}
+            <span class="amount">${{ owed }}</span> <span *ngIf="getUnknownAmounts() != ''"> + </span> {{ getUnknownAmounts() }}
           </div>
         </div>
         <div class="recipes" *ngIf="!partyMode && showRecipes">
