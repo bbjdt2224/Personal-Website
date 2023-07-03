@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
     this.updateForecast();
     this.nextDue = this.dashboard.getNextDue();
     this.untilPaycheck = this.dashboard.getDaysUntilPaycheck();
-    this.owed = this.getMoneyOwed();
+    this.owed = Math.round(this.getMoneyOwed() * 100) / 100;
     this.getRecipes();
     this.airtable.getAllRecipes();
     setInterval(() => {
