@@ -26,7 +26,7 @@ export const expenses = [
     },
     {
       title: 'AMEX',
-      dom: 16,
+      dom: 14,
       amnt: -1
     },
     {
@@ -40,8 +40,8 @@ export const expenses = [
       amnt: 2465.9
     },
     {
-      title: 'BofA Credit Card',
-      dom: 25,
+      title: 'Chase',
+      dom: 27,
       amnt: -1
     }
   ]
