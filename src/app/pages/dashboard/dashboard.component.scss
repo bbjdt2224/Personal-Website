@@ -177,14 +177,31 @@
     .recipes {
         width: 100%;
         height: 100%;
+        .recipe-search {
+            width: 100%;
+            padding: 20px 20px 0 20px;
+            box-sizing: border-box;
+            input {
+                width: 100%;
+                box-sizing: border-box;
+                font-size: x-large;
+                padding: 10px 20px;
+                border-radius: 15px;
+                border: none;
+                outline: none;
+            }
+        }
         .all-recipes {
-            display: grid;
+            display: flex;
+            flex-wrap: wrap;
             grid-gap: 10px;
             justify-content: flex-start;
             align-items: flex-start;
-            width: calc(100% - 40px);
-            height: calc(100% - 40px);
+            width: 100%;
+            height: max-content;
             padding: 20px;
+            box-sizing: border-box;
+            overflow-y: hidden;
             .recipe {
                 height: 250px;
                 width: 250px;
@@ -197,6 +214,7 @@
                 font-size: 24px;
                 font-weight: bold;
                 cursor: pointer;
+                text-align: center;
             }
         }
         .chosen-recipe {

@@ -48,6 +48,8 @@ export class DashboardComponent implements OnInit {
   untilPaycheck = 0;
   owed = 0;
 
+  searchValue = ''
+
   showRecipes = false;
   chosenRecipe: Recipe | undefined = undefined;
 
@@ -71,6 +73,26 @@ export class DashboardComponent implements OnInit {
       this.untilPaycheck = this.dashboard.getDaysUntilPaycheck();
       this.owed = this.getMoneyOwed();
     }, 1800000);
+
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key === 'r') {
+        e.preventDefault()
+        e.stopPropagation()
+        if (!this.partyMode) {
+          this.showRecipes = !this.showRecipes
+          if (this.showRecipes === false) {
+            this.chosenRecipe = undefined
+          }
+        }
+      }
+      if (e.ctrlKey && e.key === 'p') {
+        e.preventDefault()
+        e.stopPropagation()
+        if (!this.showRecipes) {
+          this.partyMode = !this.partyMode
+        }
+      }
+    })
   }
 
   constructor(
@@ -109,6 +131,10 @@ export class DashboardComponent implements OnInit {
     r.Ingredients = this.markupToHtml(r.Ingredients);
     r.Recipe = this.markupToHtml(r.Recipe);
     this.chosenRecipe = r;
+  }
+
+  getFilteredRecipes(recipes: Recipe[]) {
+    return recipes.filter(r => r.Name.toLowerCase().includes(this.searchValue.toLowerCase()))
   }
 
   updateWeather() {

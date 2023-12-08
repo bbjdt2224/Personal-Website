@@ -39,12 +39,32 @@
   </div>
   <div class="right">
     <div class="toolbar">
-      <div class="button" *ngIf="!partyMode && showRecipes" (click)="setShowRecipes(false)">Close</div>
-      <div class="button" *ngIf="!partyMode && !showRecipes" (click)="setShowRecipes(true)">Cook Book</div>
-      <div class="button" *ngIf="!partyMode && !showRecipes" (click)="togglePartyMode()">
+      <div
+        class="button"
+        *ngIf="!partyMode && showRecipes"
+        (click)="setShowRecipes(false)"
+      >
+        Close
+      </div>
+      <div
+        class="button"
+        *ngIf="!partyMode && !showRecipes"
+        (click)="setShowRecipes(true)"
+      >
+        Cook Book
+      </div>
+      <div
+        class="button"
+        *ngIf="!partyMode && !showRecipes"
+        (click)="togglePartyMode()"
+      >
         Party Mode
       </div>
-      <div class="button" *ngIf="partyMode && !showRecipes" (click)="togglePartyMode()">
+      <div
+        class="button"
+        *ngIf="partyMode && !showRecipes"
+        (click)="togglePartyMode()"
+      >
         Daily Mode
       </div>
     </div>
@@ -65,24 +85,44 @@
             </div>
           </div>
           <div class="total">
-            <span class="amount">{{ owed | currency }}</span> <span *ngIf="getUnknownAmounts() != ''"> + </span> {{ getUnknownAmounts() }}
+            <span class="amount">{{ owed | currency }}</span>
+            <span *ngIf="getUnknownAmounts() != ''"> + </span>
+            {{ getUnknownAmounts() }}
           </div>
         </div>
         <div class="recipes" *ngIf="!partyMode && showRecipes">
+          <div class="recipe-search" *ngIf="!chosenRecipe">
+            <input type="text" autofocus [(ngModel)]="searchValue" />
+          </div>
           <div class="all-recipes" *ngIf="!chosenRecipe">
-            <div class="recipe" *ngFor="let r of recipes" (click)="chooseRecipe(r)">
-              {{r.Name}}
+            <div
+              class="recipe"
+              tabindex="0"
+              *ngFor="let r of getFilteredRecipes(recipes)"
+              (click)="chooseRecipe(r)"
+            >
+              {{ r.Name }}
             </div>
           </div>
           <div class="chosen-recipe" *ngIf="chosenRecipe">
             <div class="recipe-header">
-              <div class="recipe-title">{{chosenRecipe.Name}}</div>
-              <div class="recipe-preheat">Preheat: <b>{{chosenRecipe.Preheat}}°</b></div>
-              <div class="recipe-time">Cook Time: <b>{{(chosenRecipe.Time / 60)}}</b></div>
+              <div class="recipe-title">{{ chosenRecipe.Name }}</div>
+              <div class="recipe-preheat">
+                Preheat: <b>{{ chosenRecipe.Preheat }}°</b>
+              </div>
+              <div class="recipe-time">
+                Cook Time: <b>{{ chosenRecipe.Time / 60 }}</b>
+              </div>
             </div>
             <div class="recipe-instructions">
-              <div class="recipe-ingredients" [innerHTML]="chosenRecipe.Ingredients"></div>
-              <div class="recipe-recipe" [innerHTML]="chosenRecipe.Recipe"></div>
+              <div
+                class="recipe-ingredients"
+                [innerHTML]="chosenRecipe.Ingredients"
+              ></div>
+              <div
+                class="recipe-recipe"
+                [innerHTML]="chosenRecipe.Recipe"
+              ></div>
             </div>
           </div>
         </div>
