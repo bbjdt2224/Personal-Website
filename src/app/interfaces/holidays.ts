@@ -10,9 +10,29 @@ export const Holidays: Holiday[] = [
         image: 'mlk.jpeg'
     },
     {
+        title: 'Groundhog Day',
+        date: '02/02',
+        image: 'groundhog.jpeg'
+    },
+    {
+        title: 'Mardi Gras',
+        date: '02/13',
+        image: 'mardi-gras.jpeg'
+    },
+    {
+        title: 'Valentines Day',
+        date: '02/14',
+        image: 'valentines.jpeg'
+    },
+    {
         title: 'Presidents Day',
         date: '02/19',
         image: 'presidents.jpeg'
+    },
+    {
+        title: 'St. Patricks Day',
+        date: '03/17',
+        image: 'st-patricks.jpeg'
     },
     {
         title: 'Easter Sunday',
@@ -20,9 +40,24 @@ export const Holidays: Holiday[] = [
         image: 'easter.jpeg'
     },
     {
+        title: 'Cinco de Mayo',
+        date: '05/05',
+        image: 'cinco-de-mayo.jpeg'
+    },
+    {
+        title: 'Mothers Day',
+        date: '05/12',
+        image: 'mothers.jpeg'
+    },
+    {
         title: 'Memorial Day',
         date: '05/27',
         image: 'memorial.jpeg'
+    },
+    {
+        title: 'Fathers Day',
+        date: '06/16',
+        image: 'fathers.jpeg'
     },
     {
         title: 'Juneteenth',
@@ -38,6 +73,11 @@ export const Holidays: Holiday[] = [
         title: 'Labor Day',
         date: '09/02',
         image: 'labor.jpeg'
+    },
+    {
+        title: 'Halloween',
+        date: '10/31',
+        image: 'halloween.jpeg'
     },
     {
         title: 'Veterans Day',
