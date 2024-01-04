@@ -5,6 +5,7 @@ import {
   ToDoItem,
 } from 'src/app/interfaces/airtable.interface';
 import { ForecastResponse } from 'src/app/interfaces/dashboard.interface';
+import { Holiday } from 'src/app/interfaces/holidays';
 import { AirtableService } from 'src/app/services/airtable.service';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
@@ -48,6 +49,12 @@ export class DashboardComponent implements OnInit {
   untilPaycheck = 0;
   owed = 0;
 
+  nextHoliday: Holiday = {
+    title: '',
+    date: '',
+    image: ''
+  }
+
   searchValue = ''
 
   showRecipes = false;
@@ -64,6 +71,7 @@ export class DashboardComponent implements OnInit {
     this.nextDue = this.dashboard.getNextDue();
     this.untilPaycheck = this.dashboard.getDaysUntilPaycheck();
     this.owed = Math.round(this.getMoneyOwed() * 100) / 100;
+    this.nextHoliday = this.dashboard.getNextHoliday()
     this.getRecipes();
     this.airtable.getAllRecipes();
     setInterval(() => {

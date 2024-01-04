@@ -7,6 +7,7 @@ import {
   WeatherResponse,
 } from '../interfaces/dashboard.interface';
 import { expenses } from '../interfaces/expenses';
+import { Holiday, Holidays } from '../interfaces/holidays';
 
 @Injectable()
 export class DashboardService {
@@ -84,5 +85,25 @@ export class DashboardService {
         daysUntil
       }
     })
+  }
+
+  getNextHoliday(): Holiday {
+    const next = Holidays.reduce((recent, current) => {
+      let daysUntil = this.getDaysUntil(new Date(current.date + '/' + (new Date().getFullYear())))
+      if (daysUntil < 0) {
+        daysUntil = this.getDaysUntil(new Date(current.date + '/' + (new Date().getFullYear() + 1)))
+      }
+      let recentDaysUntil = this.getDaysUntil(new Date(recent.date + '/' + (new Date().getFullYear())))
+      if (recentDaysUntil < 0) {
+        recentDaysUntil = this.getDaysUntil(new Date(recent.date + '/' + (new Date().getFullYear() + 1)))
+      }
+      if (daysUntil < recentDaysUntil) {
+        current.daysUntil = daysUntil
+        return current
+      }
+      recent.daysUntil = recentDaysUntil
+      return recent
+    })
+    return next
   }
 }

@@ -128,8 +128,38 @@
         background-color: rgba(0,0,0,0.8);
         display: flex;
         justify-content: flex-start;
-        align-items: flex-end;
+    }
+
+    .holiday {
+        flex-grow: 1;
+        height: 50%;
+        position: relative;
+        width: 100%;
+        display: flex;
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 20px;
+        .background-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            opacity: 0.75;
+        }
+        h1 {
+            font-size: 100px;
+        }
+        h3 {
+            font-size: 54px;
+        }
+        h1, h3 {
+            z-index: 1;
+            background-color: rgba(0,0,0,0.8);
+            border-radius: 20px;
+            padding: 50px;
+
+        }
     }
 
     .next-due {
@@ -138,7 +168,7 @@
         border-radius: 8px;
         padding: 10px;
         height: 50%;
-        width: 500px;
+        width: 35%;
         display: flex;
         justify-content: space-between;
         align-items: center;
