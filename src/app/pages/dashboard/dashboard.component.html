@@ -75,8 +75,10 @@
           class="holiday"
         >
           <img class="background-image" [src]="'./assets/images/holidays/' + nextHoliday.image"/>
-          <h1>{{ nextHoliday.title }}</h1>
-          <h3>{{ nextHoliday.daysUntil }} Days</h3>
+          <div class="holiday-text">
+            <h1>{{ nextHoliday.title }}</h1>
+            <h3>{{ nextHoliday.daysUntil }} Days</h3>
+          </div>
         </div>
         <div *ngIf="!partyMode && !showRecipes" class="next-due">
           <div class="top">
