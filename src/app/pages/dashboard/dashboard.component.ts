@@ -80,6 +80,7 @@ export class DashboardComponent implements OnInit {
       this.nextDue = this.dashboard.getNextDue();
       this.untilPaycheck = this.dashboard.getDaysUntilPaycheck();
       this.owed = this.getMoneyOwed();
+      this.nextHoliday = this.dashboard.getNextHoliday()
     }, 1800000);
 
     document.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -246,7 +247,7 @@ export class DashboardComponent implements OnInit {
     return this.nextDue
       .filter((n) => n.amt < 0)
       .map((n) => n.title)
-      .join('and');
+      .join(' and ');
   }
 
   markupToHtml(input: string) {

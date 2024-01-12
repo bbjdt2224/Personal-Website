@@ -22,7 +22,7 @@ export const expenses = [
     {
       title: 'Car',
       dom: 14,
-      amnt: 495.84
+      amnt: -1
     },
     {
       title: 'AMEX',
@@ -37,7 +37,7 @@ export const expenses = [
     {
       title: 'House',
       dom: 1,
-      amnt: 2465.9
+      amnt: -1
     },
     {
       title: 'Chase',
