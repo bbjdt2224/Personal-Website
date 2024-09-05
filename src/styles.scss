@@ -1,6 +1,10 @@
 :root {
-    --primary-color: #55fca0;
-    --secondary-color: #0a0e29;
+    --primary-color: #970c10;
+    --secondary-color: #474440;
+    --tertiary-color: #738580;
+    --background-color: #bfcad0;
+    --primary-shade: #6A080B;
+    --app-width: 1600px
   }
   
   html {
@@ -8,9 +12,9 @@
   }
   
   body {
-    background-color: var(--secondary-color);
+    background-color: var(--background-color);
     font-family: "Courier New", Courier, monospace;
-    color: white;
+    color: var(--secondary-color);
     font-size: 22px;
   }
   

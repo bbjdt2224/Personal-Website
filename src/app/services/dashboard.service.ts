@@ -41,9 +41,10 @@ export class DashboardService {
     const dayMultiplier = 24 * 3600 * 1000;
     const weekMultiplier = dayMultiplier * 7;
     const today = new Date()
-    today.setDate(today.getDate() + ((3 + (7 - today.getDay())) % 7));
+    today.setDate(today.getDate() + ((5 + (7 - today.getDay())) % 7));
+    today.setDate(today.getDate() - 2)
     // If today
-    if (today.getDate() === new Date().getDate()) {
+    if (today.getDate() <= new Date().getDate()) {
         today.setDate(today.getDate() + 7)
     }
     // Make sure its an odd week
