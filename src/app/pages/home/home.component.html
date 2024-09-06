@@ -7,7 +7,7 @@
       <li><a href="#contact">Contact Me</a></li>
     </ul>
   </nav>
-  <div class="social-links">
+  <div class="header-social-links">
     <a href="https://www.linkedin.com/in/justin-true-b42404156/"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,8 @@
   <div class="intro">
     <div class="welcome">
       <span class="name">Hi, I'm Justin.</span>
-      <span>A <span class="highlight">software developer</span> <br />in
+      <span
+        >A <span class="highlight">software developer</span> <br />in
         Tampa</span
       >
       <a class="contact-button" href="#contact">Contact Me</a>
@@ -119,7 +120,14 @@
   </div>
   <div id="projects" class="projects">
     <h2>My Projects</h2>
-    <span>Please visit my Github for more information</span>
+    <div class="project-list">
+      <div
+        class="project"
+        (click)="openLink('https://codepen.io/Justin-True')"
+        style="background-image: url('./assets/images/my-codepen.png')"
+      >
+      </div>
+    </div>
   </div>
   <div id="contact" class="contact">
     <div class="contact-left">

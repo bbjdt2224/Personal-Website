@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  openLink(link: string) {
+    window.open(link)
+  }
+
 }
