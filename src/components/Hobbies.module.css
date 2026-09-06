@@ -2,10 +2,10 @@
   background: var(--color-bg);
 }
 
-/* Hobby Grid */
+/* Hobby Grid - auto-fit collapses to fewer columns (down to 1 on phones) as space shrinks */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.25rem;
   margin-top: 3rem;
 }
@@ -300,17 +300,7 @@
   line-height: 1.7;
 }
 
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .dialog {
     max-height: 95vh;
   }

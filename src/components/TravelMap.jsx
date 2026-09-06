@@ -8,6 +8,9 @@ const MAP_BOUNDS = [[10, -170], [75, 55]]
 const MAP_CENTER = [42, -45]
 const MAP_ZOOM = 3
 
+// Above this many photos, dot indicators get too cramped - rely on arrows + the counter instead.
+const MAX_DOTS = 10
+
 // --- Photo Carousel Dialog ---
 function PhotoDialog({ location, onClose }) {
   const [idx, setIdx] = useState(0)
@@ -81,16 +84,18 @@ function PhotoDialog({ location, onClose }) {
                       <path d="M9 18l6-6-6-6" />
                     </svg>
                   </button>
-                  <div className={styles.dots}>
-                    {photos.map((_, i) => (
-                      <button
-                        key={i}
-                        className={`${styles.dot} ${i === idx ? styles.dotActive : ''}`}
-                        onClick={e => { e.stopPropagation(); setIdx(i) }}
-                        aria-label={`Photo ${i + 1}`}
-                      />
-                    ))}
-                  </div>
+                  {photos.length <= MAX_DOTS && (
+                    <div className={styles.dots}>
+                      {photos.map((_, i) => (
+                        <button
+                          key={i}
+                          className={`${styles.dot} ${i === idx ? styles.dotActive : ''}`}
+                          onClick={e => { e.stopPropagation(); setIdx(i) }}
+                          aria-label={`Photo ${i + 1}`}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </>
               )}
             </>

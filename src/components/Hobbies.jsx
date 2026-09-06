@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { hobbies } from '../config/hobbies'
 import styles from './Hobbies.module.css'
 
+// Above this many photos, dot indicators get too cramped - rely on arrows + the counter instead.
+const MAX_DOTS = 10
+
 function CarouselDialog({ hobby, onClose }) {
   const [idx, setIdx] = useState(0)
   const photos = hobby.photos || []
@@ -80,7 +83,7 @@ function CarouselDialog({ hobby, onClose }) {
               )}
 
               {/* Dot indicators */}
-              {photos.length > 1 && (
+              {photos.length > 1 && photos.length <= MAX_DOTS && (
                 <div className={styles.dots}>
                   {photos.map((_, i) => (
                     <button
