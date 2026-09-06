@@ -1,0 +1,321 @@
+.section {
+  background: var(--color-bg-elevated);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 4rem;
+}
+
+.mapWrap {
+  position: relative;
+  height: 480px;
+  margin: 2.5rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* Fake a dark basemap over free OpenStreetMap raster tiles (no API key required) */
+.tileLayer {
+  filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9);
+}
+
+.mapPlaceholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  background: var(--color-bg);
+}
+
+/* Scroll hint */
+.scrollHint {
+  position: absolute;
+  bottom: 0.875rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  padding: 0.3rem 0.875rem;
+  border-radius: var(--radius-full);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 500;
+}
+
+/* Location chips */
+.locationRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chipNav {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.chipNav:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-subtle);
+}
+
+.locationList {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  gap: 0.6rem;
+  padding: 0.2rem 0;
+}
+
+.locationList::-webkit-scrollbar {
+  display: none;
+}
+
+.locationChip {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.875rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.locationChip:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-subtle);
+}
+
+.locationChipActive {
+  color: white !important;
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+}
+
+/* ---- Photo Dialog ---- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.dialog {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  max-width: 960px;
+  width: 100%;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.dialogHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.dialogTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.2rem;
+}
+
+.dialogMeta {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.closeBtn {
+  color: var(--color-text-muted);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  color: var(--color-text);
+  background: rgba(255,255,255,0.08);
+}
+
+/* Photo area */
+.photoArea {
+  position: relative;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 640px;
+  min-height: 640px;
+  min-width: 640px;
+}
+
+.photo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.emptyPhoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 4rem 2rem;
+  flex: 1;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+.emptyText {
+  font-size: 0.9rem;
+  color: var(--color-text-subtle);
+  font-style: italic;
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.arrow:hover {
+  background: rgba(0,0,0,0.8);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.arrowLeft { left: 0.875rem; }
+.arrowRight { right: 0.875rem; }
+
+/* Dots */
+.dots {
+  position: absolute;
+  bottom: 0.875rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.dotActive {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* Footer */
+.dialogFooter {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 72px;
+}
+
+.footerCaption {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.footerDate {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.footerDetails {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-top: 0.1rem;
+}
+
+.footerDesc {
+  font-size: 0.925rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .mapWrap {
+    height: 340px;
+  }
+
+  .dialog {
+    max-height: 95vh;
+  }
+
+  .photoArea {
+    height: 60vh;
+    min-height: 320px;
+    min-width: 0;
+  }
+}

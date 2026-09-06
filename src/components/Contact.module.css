@@ -1,0 +1,189 @@
+.section {
+  background: var(--color-bg-elevated);
+  border-top: 1px solid var(--color-border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 2.5rem;
+  align-items: start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.subtext {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 440px;
+}
+
+/* Email button */
+.emailBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--color-accent);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: background var(--transition), transform var(--transition-fast), box-shadow var(--transition);
+  max-width: fit-content;
+}
+
+.emailBtn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+}
+
+/* Social buttons */
+.socials {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color var(--transition), border-color var(--transition), transform var(--transition-fast);
+}
+
+.socialBtn:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-subtle);
+  transform: translateY(-2px);
+}
+
+/* Resume Card */
+.resumeCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.resumeCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), transparent 60%);
+}
+
+.resumeIcon {
+  color: var(--color-accent);
+  opacity: 0.8;
+}
+
+.resumeTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.resumeSubtitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  margin-top: -0.5rem;
+}
+
+.resumeDesc {
+  font-size: 0.925rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.resumeActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.resumeBtnPrimary {
+  flex: 1;
+  text-align: center;
+  padding: 0.7rem 1.25rem;
+  background: var(--color-accent);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: background var(--transition), transform var(--transition-fast);
+}
+
+.resumeBtnPrimary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.resumeBtnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.25rem;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: color var(--transition), border-color var(--transition), transform var(--transition-fast);
+}
+
+.resumeBtnSecondary:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-subtle);
+  transform: translateY(-1px);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--color-border);
+  margin-top: 5rem;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.footerText {
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .socials {
+    flex-wrap: wrap;
+  }
+}
